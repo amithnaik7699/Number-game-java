@@ -1,0 +1,53 @@
+//Number guess game
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class NumberGuessingGame 
+{
+public static void main(String[] args) 
+{
+int min=1;
+int max=100;
+Random random=new Random();
+int numberToGuess=random.nextInt(max-min+1)+min;
+int maxAttempts=5;
+Scanner scanner=new Scanner(System.in);
+System.out.println("Welcome to the Number Guessing Game :)");
+System.out.println("Guess the number between "+min+" and "+max+".");
+boolean hasGuessedCorrectly=false;
+int attempts=0;
+while(attempts<maxAttempts) 
+{
+System.out.print("Enter your guess:");
+int userGuess=scanner.nextInt();
+attempts++;
+if (userGuess==numberToGuess) 
+{
+System.out.println("Congratulations You have guessed the correct number.Thanks for playing.");
+hasGuessedCorrectly=true;
+break;
+} 
+else if (userGuess<numberToGuess) 
+{
+System.out.println("Too low guess again.");
+} 
+else 
+{
+System.out.println("Too high guess again.");
+}
+int attemptsLeft=maxAttempts-attempts;
+if (attemptsLeft>0) 
+{
+System.out.println("You have "+attemptsLeft+" attempts left.\n");
+}
+}
+        
+
+if (!hasGuessedCorrectly) 
+{
+System.out.println("Sorry, you've used all your attempts. The number was " + numberToGuess + "."+"\nBetter luck next time");
+}
+scanner.close();
+}
+}
